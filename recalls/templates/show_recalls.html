@@ -1,0 +1,5 @@
+{% for recall in recalls %}
+<div class="recall">
+  {{ recall['_source']['reason-for-recall'] }}
+</div>
+{% endfor %}
