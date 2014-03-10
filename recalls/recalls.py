@@ -5,11 +5,9 @@ from pyelasticsearch import ElasticSearch
 
 
 app = Flask(__name__)
-app.config.from_object('settings')
-app.config.from_object('local_settings')
 
 # We'll initalize the ElasticSearch engine with the URL from the settings file
-es = ElasticSearch(app.config['ES_URL'])
+es = ElasticSearch(os.environ['ES_URL'])
 
 #
 # This controls the view for the homepage, which shows the most recent additions
