@@ -32,7 +32,8 @@ def show_splash():
 @app.route('/search')
 def search_results():
     if request.args.get('ean'):
-        upc = request.args.get('ean')
+        # Remove the first digit from the pic2shop returned UPC code
+        upc = request.args.get('ean')[1:]
     else:
         upc = request.args.get('q')
     recalls_raw = es.search('product-description:%s' % upc, index=os.environ['ES_INDEX'])
