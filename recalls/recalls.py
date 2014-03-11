@@ -31,7 +31,10 @@ def show_splash():
 #  
 @app.route('/search')
 def search_results():
-    upc = request.args.get('q')
+    if request.args.get('ean'):
+        upc = request.args.get('ean')
+    else:
+        upc = request.args.get('q')
     recalls_raw = es.search('product-description:%s' % upc, index=os.environ['ES_INDEX'])
     recalls_raw = recalls_raw["hits"]["hits"]
     recalls = []
