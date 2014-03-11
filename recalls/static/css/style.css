@@ -5780,6 +5780,7 @@ body {
   color: #ffffff;
 }
 .main {
+  margin-top: 25px;
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -5789,11 +5790,24 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-.content h1 {
-  margin-top: 25px;
-}
 .content h1 img {
-  width: 80%;
+  width: 60%;
+  max-width: 225px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.content hgroup h2 {
+  text-align: center;
+}
+.content input,
+.content label {
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.content button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -5803,4 +5817,32 @@ body {
     float: left;
     width: 100%;
   }
+}
+article.recall {
+  width: 100%;
+  border-left: 5px solid #f0ad4e;
+}
+article.recall.ongoing {
+  border-left: 5px solid #d9534f;
+}
+article.recall h2 {
+  font-size: 1.5em;
+  padding: 0;
+  padding-bottom: 5px;
+  margin: 0;
+}
+article.recall .recall_meta {
+  font-style: italic;
+}
+article.recall header {
+  margin-bottom: 20px;
+}
+article.recall .content {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: #ffffff;
+  color: #333333;
+}
+article.recall dd {
+  margin-bottom: 15px;
 }

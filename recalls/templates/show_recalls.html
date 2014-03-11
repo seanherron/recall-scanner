@@ -1,5 +1,30 @@
-{% for recall in recalls %}
-<div class="recall">
-  {{ recall['_source']['reason-for-recall'] }}
+{% extends "layout.html" %}
+{% block body %}
+<div class="content">
+	<div class="alert alert-warning"><strong>Important!</strong> This is a beta application. Do not assume that these results are complete.</div>
 </div>
-{% endfor %}
+{% if recalls %}
+	{% for recall in recalls %}
+		<article class="recall {% if recall.status =="Ongoing" %}ongoing{% endif %}" id="recall-{{recall.event_id }}">
+			<div class="content">
+				<header>
+					<h2>{{ recall.product_name }}</h2>
+					<span class="recall_meta"><strong>{{ recall.status }}</strong> - Recalled by {{ recall.recalling_firm }} on {{ recall.date }}</span>
+				</header>
+				<p class="reason_for_recall">{{ recall.reason_for_recall }} <em>({{ recall.product_description}})</em></p>
+				  <dt>Product Type</dt>
+				  <dd>{{ recall.product_type }}</dd>
+				  
+				  <dt>Distribution Pattern</dt>
+				  <dd>{{ recall.distribution_pattern }}</dd>
+				  
+				  <dt>Code Info</dt>
+				  <dd>{{ recall.code_info }}</dd>
+				</dl>
+			</div>
+		</article>
+	{% endfor %}
+{% else %}
+No recalls!
+{% endif %}
+{% endblock %}

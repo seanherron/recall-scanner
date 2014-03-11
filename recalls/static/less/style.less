@@ -8,16 +8,56 @@ body {
 }
 
 .main {
-  .make-row();
+	margin-top:25px;
+	.make-row();
 }
 
 .content {
   h1 {
-    margin-top:25px;
     img {
-      width:80%;
+      width:60%;
+	  max-width:225px;
       .center-block();
     }
   }
+  hgroup h2 {
+	  text-align:center;
+  }
+  input,label {
+	  max-width:500px;
+	  .center-block();
+  }
+  button {
+	  .center-block();
+  }
   .make-sm-column(12);
+}
+
+article.recall {
+	width:100%;
+	border-left: 5px solid @brand-warning;
+	&.ongoing {
+		border-left: 5px solid @brand-danger;
+	}
+	h2 {
+		font-size: 1.5em;
+		padding:0;
+		padding-bottom:5px;
+		margin:0;
+	}
+	.recall_meta {
+		font-style: italic;
+	}
+	header {
+		margin-bottom:20px;
+	}
+	.content {
+		padding-top:5px;
+		padding-bottom:5px;
+		background: #ffffff;
+		color: @text-color;
+	}
+	dd {
+		margin-bottom:15px;
+	}
 }
