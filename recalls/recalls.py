@@ -15,17 +15,20 @@ es = ElasticSearch(os.environ['ES_URL'])
 #
 # This controls the view for the homepage, which shows the most recent additions
 #
+def generate_query_url(platform):
+    if platform == 'android':
+        query_url = 'zxing://scan/?ret=%ssearch?q={CODE}' % urllib.quote_plus(request.url_root)
+    elif platform == 'iphone' or platform == 'ipad':
+        query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
+    else:
+        query_url = None
+    
+    return query_url
+
+
 @app.route('/')
-def show_splash():
-        platform = request.user_agent.platform
-        if platform == 'android':
-            query_url = 'zxing://scan/?ret=%ssearch?q={CODE}' % urllib.quote_plus(request.url_root)
-        elif platform == 'iphone' or platform == 'ipad':
-            query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
-        else:
-            query_url = None
-            
-        return render_template('search.html', query_url=query_url, platform=platform)
+def show_splash():            
+        return render_template('search.html', query_url=generate_query_url(request.user_agent.platform), platform=request.user_agent.platform)
 #
 # This controls the view for query pages.
 #  
@@ -63,4 +66,4 @@ def search_results():
         recall['product_name'] = item['_source']['product-description'].split(',', 1)[0]
         
         recalls.append(recall)
-    return render_template('show_recalls.html', recalls=recalls, page_title=upc)
+    return render_template('show_recalls.html', recalls=recalls, page_title=upc, query_url=generate_query_url(request.user_agent.platform))

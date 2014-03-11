@@ -5,29 +5,29 @@
 </div>
 {% if recalls %}
 	{% for recall in recalls %}
-		<article class="recall {% if recall.status =="Ongoing" %}ongoing{% endif %}" id="recall-{{recall.event_id }}">
-			<div class="content">
-				<header>
-					<h2>{{ recall.product_name }}</h2>
-					<span class="recall_meta"><strong>{{ recall.status }}</strong> - Recalled by {{ recall.recalling_firm }} on {{ recall.date }}</span>
+		<article class="recall panel {% if recall.status =="Ongoing" %}panel-danger{% else %}panel-default{% endif %}" id="recall-{{recall.event_id }}">
+				<header class="panel-heading">
+					<h2 class="panel-title">{{ recall.product_name }}</h2>
+					<span class="recall_meta">{{ recall.status }} - Recalled by {{ recall.recalling_firm }} on {{ recall.date }}</span>
 				</header>
-				<p class="reason_for_recall">{{ recall.reason_for_recall }} <em>({{ recall.product_description}})</em></p>
-				  <dt>Product Type</dt>
-				  <dd>{{ recall.product_type }}</dd>
+        <div class="panel-body">
+  				<p class="reason_for_recall">{{ recall.reason_for_recall }} <em>({{ recall.product_description}})</em></p>
+  				  <dt>Product Type</dt>
+  				  <dd>{{ recall.product_type }}</dd>
 				  
-				  <dt>Distribution Pattern</dt>
-				  <dd>{{ recall.distribution_pattern }}</dd>
+  				  <dt>Distribution Pattern</dt>
+  				  <dd>{{ recall.distribution_pattern }}</dd>
 				  
-				  <dt>Code Info</dt>
-				  <dd>{{ recall.code_info }}</dd>
-				</dl>
-			</div>
+  				  <dt>Code Info</dt>
+  				  <dd>{{ recall.code_info }}</dd>
+  				</dl>
+        </div>
 		</article>
 	{% endfor %}
 {% else %}
-
+<div class="content">
 <div class="alert alert-info">No recalls could be found for this barcode. However, that does not mean a recall does not exist for this product. Always check <a class="alert-link" href="http://www.fda.gov">FDA.gov</a> for the latest information.</div>
-
+</div>
 {% endif %}
-<a href="/">Go home</a>
+<a class="btn btn-default btn-lg" href="{% if query_url %}{{ query_url }}{% else %}/{% endif %}">Look for another product</a>
 {% endblock %}
