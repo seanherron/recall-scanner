@@ -19,9 +19,9 @@ es = ElasticSearch(os.environ['ES_URL'])
 def show_splash():
         platform = request.user_agent.platform
         if platform == 'android':
-            query_url = 'zxing://scan/?ret=%ssearch?upc={CODE}' % urllib.quote_plus(request.url_root)
+            query_url = 'zxing://scan/?ret=%sq?upc={CODE}' % urllib.quote_plus(request.url_root)
         elif platform == 'iphone' or platform == 'ipad':
-            query_url = 'pic2shop://scan/?callback=%ssearch?upc=//EAN' % urllib.quote_plus(request.url_root)
+            query_url = 'pic2shop://scan/?callback=%ssearch?q=UPC' % urllib.quote_plus(request.url_root)
         else:
             query_url = None
             
@@ -31,7 +31,7 @@ def show_splash():
 #  
 @app.route('/search')
 def search_results():
-    upc = request.args.get('upc')
+    upc = request.args.get('q')
     recalls_raw = es.search('product-description:%s' % upc, index=os.environ['ES_INDEX'])
     recalls_raw = recalls_raw["hits"]["hits"]
     recalls = []
