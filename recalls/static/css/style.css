@@ -2960,31 +2960,6 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.content .loading {
-  display: block;
-  display: none;
-  text-align: center;
-  font-size: 1.2em;
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
-}
-@-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 @media (min-width: 768px) {
   .content {
     float: left;
