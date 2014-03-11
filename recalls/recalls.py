@@ -19,7 +19,7 @@ es = ElasticSearch(os.environ['ES_URL'])
 def show_splash():
         platform = request.user_agent.platform
         if platform == 'android':
-            query_url = 'zxing://scan/?ret=%s?q={CODE}' % urllib.quote_plus(request.url_root)
+            query_url = 'zxing://scan/?ret=%s/search?q={CODE}' % urllib.quote_plus(request.url_root)
         elif platform == 'iphone' or platform == 'ipad':
             query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
         else:
