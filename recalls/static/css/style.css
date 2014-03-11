@@ -5800,6 +5800,12 @@ body {
 .content hgroup h2 {
   text-align: center;
 }
+.content .barcode-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 .content input,
 .content label {
   max-width: 500px;
