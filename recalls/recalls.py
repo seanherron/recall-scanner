@@ -21,7 +21,7 @@ def show_splash():
         if platform == 'android':
             query_url = 'zxing://scan/?ret=%sq?upc={CODE}' % urllib.quote_plus(request.url_root)
         elif platform == 'iphone' or platform == 'ipad':
-            query_url = 'pic2shop://scan/?callback=%ssearch?q=UPC' % urllib.quote_plus(request.url_root)
+            query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
         else:
             query_url = None
             
