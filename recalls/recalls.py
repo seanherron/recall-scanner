@@ -20,11 +20,10 @@ def show_splash():
         platform = request.user_agent.platform
         if platform == 'android' or platform == 'iphone' or platform == 'ipad':
             query_url = 'zxing://scan/?ret=%ssearch?upc={CODE}' % urllib.quote_plus(request.url_root)
-            
         else:
             query_url = None
-
-            return render_template('search.html', query_url=query_url)
+            
+        return render_template('search.html', query_url=query_url)
 #
 # This controls the view for query pages.
 #  
