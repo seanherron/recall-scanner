@@ -1,4 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-<a href="{{ query_url }}">{{ query_url }}</a>
+<h1><a href="/"><img src="/static/img/fda.png" alt="FDA"></a></h1>
+
+{% if query_url %}
+<button class="btn btn-large" href="{{ query_url }}">Scan a Barcode</a>
+{% else %}
+No Barcode
+{% endif %}
 {% endblock %}

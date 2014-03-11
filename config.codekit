@@ -1872,6 +1872,16 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsSetByUser": 0
 		},
+	"\/recalls\/static\/img\/fda.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5385,
+		"inputAbbreviatedPath": "\/recalls\/static\/img\/fda.png",
+		"outputAbbreviatedPath": "\/recalls\/static\/img\/fda.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/recalls\/static\/less\/bootstrap.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
@@ -1934,6 +1944,14 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/recalls\/templates\/layout.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsSetByUser": 0
+		},
+	"\/recalls\/templates\/search.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/recalls\/templates\/search.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsSetByUser": 0
 		},
