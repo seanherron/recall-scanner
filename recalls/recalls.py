@@ -21,7 +21,7 @@ def show_splash():
         if platform == 'android':
             query_url = 'zxing://scan/?ret=%sq?upc={CODE}' % urllib.quote_plus(request.url_root)
         elif platform == 'iphone' or platform == 'ipad':
-            query_url = 'pic2shop://scan?callback=%ssearch?q=UPC' % urllib.quote_plus(request.url_root)
+            query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
         else:
             query_url = None
             
@@ -31,9 +31,15 @@ def show_splash():
 #  
 @app.route('/search')
 def search_results():
-    if request.args.get('upc'):
+    if request.args.get('ean'):
         # Remove the first digit from the pic2shop returned UPC code
-        upc = request.args.get('upc')
+        upc = request.args.get('ean')
+        if len(upc) == 13:
+            upc = upc[:1]
+        elif len(upc) == 12:
+            upc = request.args.get('ean')
+        else:
+            upc = request.args.get('ean')
     else:
         upc = request.args.get('q')
     recalls_raw = es.search('product-description:%s' % upc, index=os.environ['ES_INDEX'])
