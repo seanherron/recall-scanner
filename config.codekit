@@ -1540,6 +1540,16 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/recalls\/static\/js\/site.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/recalls\/static\/js\/site.js",
+		"outputAbbreviatedPath": "\/recalls\/static\/js\/min\/site-ck.js",
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/recalls\/static\/less\/bootstrap.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,

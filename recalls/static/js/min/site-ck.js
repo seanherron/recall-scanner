@@ -1,0 +1,1 @@
+$(document).ready(function(){navigator.userAgent.match(/Android/i)&&($(".barcode-button").hide(),$(".barcode-button a").click())});
