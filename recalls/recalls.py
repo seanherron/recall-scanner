@@ -19,7 +19,8 @@ es = ElasticSearch(os.environ['ES_URL'])
 def show_splash():
         platform = request.user_agent.platform
         if platform == 'android' or platform == 'iphone' or platform == 'ipad':
-            query_url = 'zxing://scan/?ret=%s{CODE}' % urllib.quote_plus(request.url_root)
+            query_url = 'blah'
+            
         else:
             query_url = None
 
