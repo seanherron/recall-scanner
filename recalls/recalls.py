@@ -19,8 +19,9 @@ def generate_query_url(platform):
     if platform == 'android':
         query_url = 'zxing://scan/?ret=%ssearch?q={CODE}' % urllib.quote_plus(request.url_root)
     elif platform == 'iphone' or platform == 'ipad':
-        query_url = 'pic2shop://scan?callback=%ssearch?q=EAN' % urllib.quote_plus(request.url_root)
+        query_url = 'p2spro://configure?formats=UPCE,UPC&lookup=%s/CODE' % urllib.quote_plus(request.url_root)
     else:
+        
         query_url = None
     
     return query_url
