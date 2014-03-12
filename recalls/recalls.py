@@ -17,10 +17,10 @@ es = ElasticSearch(os.environ['ES_URL'])
 #
 def generate_query_url(platform):
     if platform == 'android':
-        query_url = 'zxing://scan/?ret=%ssearch?q={CODE}' % urllib.quote_plus(request.url_root)
+        query_url = 'zxing://scan/?ret=%s' % urllib.quote_plus('%ssearch?upc={CODE}' % request.url_root)
     elif platform == 'iphone' or platform == 'ipad':
         # 'pic2shop://scan?formats=UPCE,UPC&lookup=%s/CODE'
-        query_url = 'pic2shop://scan?formats=UPCE,UPC&callback=%s' % urllib.quote_plus('%ssearch?q=UPC' % request.url_root)
+        query_url = 'pic2shop://scan?formats=UPCE,UPC&callback=%s' % urllib.quote_plus('%ssearch?upc=UPC' % request.url_root)
     else:
         query_url = None
     
@@ -35,17 +35,7 @@ def show_splash():
 #  
 @app.route('/search')
 def search_results():
-    if request.args.get('ean'):
-        # Remove the first digit from the pic2shop returned UPC code
-        upc = request.args.get('ean')
-        if len(upc) == 13:
-            upc = upc[:1]
-        elif len(upc) == 12:
-            upc = request.args.get('ean')
-        else:
-            upc = request.args.get('ean')
-    else:
-        upc = request.args.get('q')
+    upc = request.args.get('upc')
     recalls_raw = es.search('product-description:%s' % upc, index=os.environ['ES_INDEX'])
     recalls_raw = recalls_raw["hits"]["hits"]
     recalls = []
