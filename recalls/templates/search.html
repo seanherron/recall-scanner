@@ -6,14 +6,14 @@
 	<h2>Product Recall Search</h2>
 </hgroup>
 
-{% if query_url %}
+{% if query_url and scan != 'false' %}
 <button class="btn btn-default btn-lg scanner_activate" data-url="{{ query_url }}" data-platform="{{ platform }}" href="#">Scan a Barcode</button>
 <p class="browser_note">Note: You will need {{ app_name }} installed on your device in order for barcode scanning to work. We'll prompt you to install it if you don't already have it.</p>
 {% else %}
 <form role="form" method="GET" action="/search">
   <div class="form-group">
-    <label for="q">UPC Code</label>
-    <input type="number" class="form-control" id="q" name="q" placeholder="Enter UPC Code">
+    <label for="upc">UPC Code</label>
+    <input type="number" class="form-control" id="upc" name="upc" placeholder="Enter UPC Code">
   </div>
   <button type="submit" class="btn btn-lg btn-default">Submit</button>
 </form>
