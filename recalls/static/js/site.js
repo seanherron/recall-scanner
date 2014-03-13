@@ -20,8 +20,8 @@ $(document).ready(function() {
 		goScan($(this).data('url'));
 	});
   
-	$(".install_app").click(function() {
-    $('#myModal').modal('hide');
+	$(".install-app").click(function() {
+    $('#scan-app-modal').modal('hide');
     window.location.href = $(this).data('url');
 	});
 });
