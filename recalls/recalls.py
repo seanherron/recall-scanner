@@ -69,6 +69,6 @@ def search_results():
             recalls.append(recall)
     
         query_url, app_prefix, app_name, app_url = generate_query(request.user_agent.platform)
-        return render_template('show_recalls.html', recalls=recalls, page_title=upc, query_url=query_url, app_prefix=app_prefix, app_name=app_name, app_url=app_url)
+        return render_template('show_recalls.html', scan=request.args.get('scan'), recalls=recalls, page_title=upc, query_url=query_url, app_prefix=app_prefix, app_name=app_name, app_url=app_url)
     else:
         return "No UPC Code Provided!"
