@@ -1530,6 +1530,16 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsSetByUser": 0
 		},
+	"\/recalls\/static\/img\/example.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 760,
+		"inputAbbreviatedPath": "\/recalls\/static\/img\/example.png",
+		"outputAbbreviatedPath": "\/recalls\/static\/img\/example.png",
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/recalls\/static\/img\/fda.png": {
 		"fileType": 32768,
 		"ignore": 0,

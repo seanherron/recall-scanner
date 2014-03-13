@@ -19,8 +19,8 @@ $(document).ready(function() {
 	$(".scanner_activate").click(function() {
 		goScan($(this).data('url'));
 	});
-	
-	$(".install-app").click(function() {
-		$('#scan-app-modal').modal('hide');
-	});
+  
+  $(".install_app").mouseup(function() {
+    goScan($(this).data('url'));
+  });
 });
