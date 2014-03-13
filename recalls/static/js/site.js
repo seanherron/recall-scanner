@@ -19,8 +19,4 @@ $(document).ready(function() {
 	$(".scanner_activate").click(function() {
 		goScan($(this).data('url'));
 	});
-  
-  $(".install_app").mouseup(function() {
-    goScan($(this).data('url'));
-  });
 });
