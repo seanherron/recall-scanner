@@ -7,8 +7,8 @@
 </hgroup>
 
 {% if query_url %}
-<a class="btn btn-default btn-lg scanner_activate" data-url="{{ query_url }}" data-platform="{{ platform }}" href="#">Scan a Barcode</a>
-<!-- Loading animation container -->
+<button class="btn btn-default btn-lg scanner_activate" data-url="{{ query_url }}" data-platform="{{ platform }}" href="#">Scan a Barcode</button>
+<p class="browser_note">Note: You will need {{ app_name }} installed on your device in order for barcode scanning to work. We'll prompt you to install it if you don't already have it.</p>
 {% else %}
 <form role="form" method="GET" action="/search">
   <div class="form-group">

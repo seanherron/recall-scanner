@@ -29,5 +29,10 @@
 <div class="alert alert-info">No recalls could be found for this barcode. However, that does not mean a recall does not exist for this product. Always check <a class="alert-link" href="http://www.fda.gov">FDA.gov</a> for the latest information.</div>
 </div>
 {% endif %}
-<a class="btn btn-default btn-lg" href="{% if query_url %}{{ query_url }}{% else %}/{% endif %}">Look for another product</a>
+{% if query_url %}
+<button class="btn btn-default btn-lg scanner_activate" data-url="{{ query_url }}" data-platform="{{ platform }}" href="#">Scan a Barcode</button>
+<p class="browser_note">Note: You will need a {{ app_name }} installed on your device in order for barcode scanning to work. We'll prompt you to install it if you don't already have it.</p>
+{% else %}
+<a class="btn btn-default btn-lg" href="/">Look for another product</a>
+{% endif %}
 {% endblock %}

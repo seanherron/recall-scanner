@@ -15,20 +15,31 @@ es = ElasticSearch(os.environ['ES_URL'])
 #
 # This controls the view for the homepage, which shows the most recent additions
 #
-def generate_query_url(platform):
+def generate_query(platform):
     if platform == 'iphone' or platform == 'ipad' or platform == 'ipod':
         query_url = 'pic2shop://scan?formats=UPCE,UPC&callback=%s' % urllib.quote_plus('%ssearch?upc=UPC' % request.url_root)
+        app_prefix = 'pic2shop://'
+        app_name = 'pic2shop'
+        app_url = 'itms-apps://itunes.apple.com/us/app/pages/id308740640?mt=8&uo=4'
     if platform == 'android':
-        query_url = 'zxing://scan/?ret=%s' % urllib.quote_plus('%ssearch?upc={CODE}' % request.url_root)
+        query_url = 'intent://scan/?ret=%s#Intent;scheme=zxing;package=com.google.zxing.client.android;end' % urllib.quote_plus('%ssearch?upc={CODE}' % request.url_root)
+        app_prefix = 'zxing://'
+        app_name = 'ZXing Barcode Scanner'
+        app_url = 'market://details?id=com.google.zxing.client.android'
+        
     else:
         query_url = None
+        app_prefix = None
+        app_name = None
+        app_url = None
     
-    return query_url
+    return query_url, app_prefix, app_name, app_url
 
 
 @app.route('/')
-def show_splash():            
-        return render_template('search.html', query_url=generate_query_url(request.user_agent.platform), platform=request.user_agent.platform)
+def show_splash():
+    query_url, app_prefix, app_name, app_url = generate_query(request.user_agent.platform)
+    return render_template('search.html', query_url=query_url, app_prefix=app_prefix, app_name=app_name, app_url=app_url, platform=request.user_agent.platform)
 #
 # This controls the view for query pages.
 #  
@@ -56,4 +67,6 @@ def search_results():
         recall['product_name'] = item['_source']['product-description'].split(',', 1)[0]
         
         recalls.append(recall)
-    return render_template('show_recalls.html', recalls=recalls, page_title=upc, query_url=generate_query_url(request.user_agent.platform))
+    
+    query_url, app_prefix, app_name, app_url = generate_query(request.user_agent.platform)
+    return render_template('show_recalls.html', recalls=recalls, page_title=upc, query_url=query_url, app_prefix=app_prefix, app_name=app_name, app_url=app_url)

@@ -1,1 +1,1 @@
-function goScan(o,n){document.location=o,setTimeout(function(){windowHasFocus&&window.alert("I am an alert box!")},100)}var windowHasFocus;$(window).focus(function(){windowHasFocus=!0}).blur(function(){windowHasFocus=!1}),$("a.scanner_activate").on("click",function(){goScan($(this).data("url"),$(this).data("platform"))});
+$(document).ready(function(){function n(n){document.location=n,setTimeout(function(){c&&$("#scan-app-modal").modal()},100)}var c=!0;$(window).focus(function(){c=!0}).blur(function(){c=!1}),$(".scanner_activate").click(function(){n($(this).data("url"))})});

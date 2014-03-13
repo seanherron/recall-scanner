@@ -8,9 +8,6 @@
 
     <!-- Bootstrap -->
     <link href="/static/css/style.css" rel="stylesheet">
-    
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  	<script src="/static/js/site.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,5 +22,26 @@
           {% block body %}{% endblock %}
       </div>
     </div>
+	{% if platform == 'iphone' or platform == 'ipad' or platform == 'ipod' %}
+	<div class="modal fade" id="scan-app-modal" tabindex="-1" role="dialog" aria-labelledby="scan-app-modal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="scan-app-modal-title">Need App</h4>
+				</div>
+				<div class="modal-body">
+					In order to scan barcodes, you need to install {{ app_name }}. Click "Install App" to be redirected to the App Store to install {{ app_name }} or click "Cancel" to manually type in the barcode.
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<a href="{{ app_url }}" type="button" class="btn btn-primary">Save changes</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/static/js/min/modal-ck.js"></script>
+	<script src="/static/js/min/site-ck.js"></script>
   </body>
 </html>
