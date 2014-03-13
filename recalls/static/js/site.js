@@ -20,4 +20,7 @@ $(document).ready(function() {
 		goScan($(this).data('url'));
 	});
 	
+	$(".install-app").click(function() {
+		$('#scan-app-modal').modal('hide');
+	});
 });
