@@ -1,0 +1,1 @@
+function goScan(o,n){document.location=o,setTimeout(function(){windowHasFocus&&window.alert("I am an alert box!")},100)}var windowHasFocus;$(window).focus(function(){windowHasFocus=!0}).blur(function(){windowHasFocus=!1}),$("a.scanner_activate").on("click",function(){goScan($(this).data("url"),$(this).data("platform"))});

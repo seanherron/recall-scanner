@@ -16,11 +16,10 @@ es = ElasticSearch(os.environ['ES_URL'])
 # This controls the view for the homepage, which shows the most recent additions
 #
 def generate_query_url(platform):
+    if platform == 'iphone' or platform == 'ipad' or platform == 'ipod':
+        query_url = 'pic2shop://scan?formats=UPCE,UPC&callback=%s' % urllib.quote_plus('%ssearch?upc=UPC' % request.url_root)
     if platform == 'android':
         query_url = 'zxing://scan/?ret=%s' % urllib.quote_plus('%ssearch?upc={CODE}' % request.url_root)
-    elif platform == 'iphone' or platform == 'ipad':
-        # 'pic2shop://scan?formats=UPCE,UPC&lookup=%s/CODE'
-        query_url = 'pic2shop://scan?formats=UPCE,UPC&callback=%s' % urllib.quote_plus('%ssearch?upc=UPC' % request.url_root)
     else:
         query_url = None
     

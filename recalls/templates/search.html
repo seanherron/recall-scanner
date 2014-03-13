@@ -7,7 +7,7 @@
 </hgroup>
 
 {% if query_url %}
-<a class="btn btn-default btn-lg" href="{{ query_url }}">Scan a Barcode</a>
+<a class="btn btn-default btn-lg scanner_activate" data-url="{{ query_url }}" data-platform="{{ platform }}" href="#">Scan a Barcode</a>
 <!-- Loading animation container -->
 {% else %}
 <form role="form" method="GET" action="/search">
